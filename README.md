@@ -1,0 +1,118 @@
+# FoF Blog
+
+[![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/FriendsOfFlarum/blog/blob/1.x/LICENSE.md) [![Latest Stable Version](https://img.shields.io/packagist/v/fof/blog.svg)](https://packagist.org/packages/fof/blog) [![Total Downloads](https://img.shields.io/packagist/dt/fof/blog.svg)](https://packagist.org/packages/fof/blog)
+
+A [Flarum](https://flarum.org) extension that adds a blog section to your forum — a dedicated blog overview, article pages, and an article composer, built on top of your existing discussions and tags.
+
+## Documentation
+
+Full documentation lives in the [`docs/`](https://github.com/FriendsOfFlarum/blog/blob/1.x/docs/README.md) folder:
+
+- [Installation](https://github.com/FriendsOfFlarum/blog/blob/1.x/docs/installation.md)
+- [Features & configuration](https://github.com/FriendsOfFlarum/blog/blob/1.x/docs/features.md)
+- [Permissions & the review workflow](https://github.com/FriendsOfFlarum/blog/blob/1.x/docs/permissions.md)
+- [Developer reference](https://github.com/FriendsOfFlarum/blog/blob/1.x/docs/developers.md)
+
+## Requirements
+
+- PHP 8.2 or above
+- Flarum 1.8 or above
+- [`flarum/tags`](https://github.com/flarum/tags)
+
+## Installation
+
+```sh
+composer require fof/blog:"*"
+```
+
+## Updating
+
+```sh
+composer update fof/blog
+php flarum cache:clear
+```
+
+## Migrating from v17development/flarum-blog
+
+This extension was transferred to FriendsOfFlarum and was previously published as `v17development/flarum-blog`.
+
+For forum admins, migration is a one-line change — swap the package, keep your settings and existing blog articles:
+
+```sh
+composer remove v17development/flarum-blog
+composer require fof/blog
+php flarum migrate
+php flarum cache:clear
+php flarum assets:publish
+```
+
+`fof/blog` declares `replace: { "v17development/flarum-blog": "*" }`, so anything that depended on the old package is satisfied by the new one, and the two can never be installed at once.
+
+Third-party extension authors should update any references from the `V17Development\FlarumBlog` PHP namespace to `FoF\Blog`, and from the `v17development/blog` / `v17development-flarum-blog` frontend modules to `fof/blog`.
+
+> **Note:** SEO integration now targets [`fof/seo`](https://github.com/FriendsOfFlarum/seo) (`FoF\Seo`). If you relied on SEO tags for your blog, ensure `fof/seo` is installed and enabled.
+
+## Features
+
+- Adds a **Blog overview** page and **article detail** pages to your forum
+- An article **composer** for writing blog posts
+- Builds on the [`flarum/tags`](https://github.com/flarum/tags) extension — articles are tag-driven discussions
+- Per-article **summary** and **featured image**
+- **Highlighted** (featured) posts on the overview
+- **Categories** sidebar, with optional category hierarchy
+- Optionally disable or allow **comments** by default
+- Optional **review workflow** — articles can require approval before publishing, with dedicated write/approve permissions
+- Set the **blog overview as the forum home page**
+- Works with already-existing discussions/articles
+- Ghost (skeleton) loading states
+- Configurable **default article image**, stored on the `flarum-assets` filesystem disk
+
+## Works with
+
+Compatible — but not required — alongside:
+
+- [flarum/tags](https://github.com/flarum/tags) — required; articles are tag-based
+- [flarum/sticky](https://github.com/flarum/sticky) — sticky indicator on articles
+- [fof/seo](https://github.com/FriendsOfFlarum/seo) — SEO meta & structured data for blog pages
+- [fof/upload](https://github.com/FriendsOfFlarum/upload) — pick a featured image from your uploaded files
+- [fof/rich-text](https://github.com/FriendsOfFlarum/rich-text) — rich-text editing in the composer
+- [fof/discussion-language](https://github.com/FriendsOfFlarum/discussion-language) — per-language blog overviews
+
+## Screenshots
+
+### Blog overview page
+
+![Blog overview](https://raw.githubusercontent.com/FriendsOfFlarum/blog/1.x/docs/images/blog-overview.gif)
+
+### Blog article
+
+![Blog article](https://raw.githubusercontent.com/FriendsOfFlarum/blog/1.x/docs/images/blog-article.gif)
+
+### Blog tools
+
+![Blog tools](https://raw.githubusercontent.com/FriendsOfFlarum/blog/1.x/docs/images/blog-tools.png)
+
+### Blog settings
+
+![Blog settings](https://raw.githubusercontent.com/FriendsOfFlarum/blog/1.x/docs/images/blog-settings.png)
+
+### Admin settings
+
+![Admin settings](https://raw.githubusercontent.com/FriendsOfFlarum/blog/1.x/docs/images/admin-settings.png)
+
+## Credits
+
+This extension was originally created and maintained by [V17 Development](https://v17.dev) as `v17development/flarum-blog`. FriendsOfFlarum is grateful for their work and continues development with their blessing.
+
+Sponsored by [Glowing Blue](https://glowingblue.com/).
+
+## Links
+
+- [Packagist](https://packagist.org/packages/fof/blog)
+- [GitHub](https://github.com/FriendsOfFlarum/blog)
+- [Issues](https://github.com/FriendsOfFlarum/blog/issues)
+- [Support](https://discuss.flarum.org/d/39435)
+
+## License
+
+This extension is licensed under the MIT License. See the [LICENSE.md](https://github.com/FriendsOfFlarum/blog/blob/1.x/LICENSE.md) file for details.
