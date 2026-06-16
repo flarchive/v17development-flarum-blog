@@ -1,0 +1,11 @@
+/vendor
+composer.phar
+.idea
+.DS_Store
+Thumbs.db
+node_modules
+composer.lock
+tests/integration/tmp/
+.phpunit.result.cache
+.phpunit.cache
+.claude
